@@ -22,7 +22,7 @@ class MyCarAppService : CarAppService() {
         super.onCreate()
 
         dictionary = Utils.getDictionaryFromDb(this).sortedBy { it.number }
-        Log.d("DUPA", "onCreate");
+        Log.d("Flash", "onCreate");
     }
 
     override fun createHostValidator(): HostValidator {
@@ -38,7 +38,7 @@ class MyCarAppService : CarAppService() {
     override fun onCreateSession(): Session {
         return object : Session() {
             override fun onCreateScreen(intent: Intent): Screen {
-                Log.d("DUPA", "onCreateScreen");
+                Log.d("Flash", "onCreateScreen");
                 return if (carContext.checkSelfPermission(Manifest.permission.RECORD_AUDIO)
                     == PackageManager.PERMISSION_GRANTED
                 ) {

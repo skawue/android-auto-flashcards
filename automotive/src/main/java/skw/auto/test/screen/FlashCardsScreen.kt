@@ -21,7 +21,7 @@ class FlashCardsScreen(carContext: CarContext) : Screen(carContext), Recognition
     var textToSpeechEn: TextToSpeech? = null
 
     var nextWord: Int = 0
-    var dictionary: List<Word> = listOf(Word("asd", "dupa", 0))
+    var dictionary: List<Word> = listOf(Word("english", "angielski", 0))
 
     private val recognitionManager: MyVoiceRecognitionListener by lazy {
         MyVoiceRecognitionListener(carContext, activationKeyword = "hello", callback = this)
@@ -75,38 +75,38 @@ class FlashCardsScreen(carContext: CarContext) : Screen(carContext), Recognition
     }
 
     override fun onPrepared(status: RecognitionStatus) {
-        Log.d("DUPA", "onPrepared: $status")
+        Log.d("Flash", "onPrepared: $status")
     }
 
     override fun onBeginningOfSpeech() {
-        Log.d("DUPA", "onBeginningOfSpeech")
+        Log.d("Flash", "onBeginningOfSpeech")
     }
 
     override fun onKeywordDetected() {
-        Log.d("DUPA", "onKeywordDetected")
+        Log.d("Flash", "onKeywordDetected")
     }
 
     override fun onReadyForSpeech(params: Bundle) {
-        Log.d("DUPA", "onReadyForSpeech")
+        Log.d("Flash", "onReadyForSpeech")
     }
 
     override fun onBufferReceived(buffer: ByteArray) {
-        Log.d("DUPA", "onBufferReceived")
+        Log.d("Flash", "onBufferReceived")
     }
 
     override fun onRmsChanged(rmsdB: Float) {
-//        Log.d("DUPA", "onRmsChanged: $rmsdB")
+//        Log.d("Flash", "onRmsChanged: $rmsdB")
     }
 
     override fun onPartialResults(results: List<String>) {
         Log.d(
-            "DUPA",
+            "Flash",
             "onPartialResult: " + results.joinToString(", ")
         )
     }
 
     override fun onResults(results: List<String>, scores: FloatArray?) {
-        Log.d("DUPA", "onResults: " + results.joinToString(", "))
+        Log.d("Flash", "onResults: " + results.joinToString(", "))
 
         if (dictionary[nextWord].english
                 .split(",")
@@ -120,15 +120,15 @@ class FlashCardsScreen(carContext: CarContext) : Screen(carContext), Recognition
     }
 
     override fun onError(errorCode: Int) {
-        Log.d("DUPA", "onError: $errorCode")
+        Log.d("Flash", "onError: $errorCode")
     }
 
     override fun onEvent(eventType: Int, params: Bundle) {
-        Log.d("DUPA", "onEvent: $eventType")
+        Log.d("Flash", "onEvent: $eventType")
     }
 
     override fun onEndOfSpeech() {
-        Log.d("DUPA", "onEndOfSpeech")
+        Log.d("Flash", "onEndOfSpeech")
     }
 
     private fun sayInPolish(text: String) {
@@ -138,7 +138,7 @@ class FlashCardsScreen(carContext: CarContext) : Screen(carContext), Recognition
             null,
             "" + Calendar.getInstance().timeInMillis
         )
-        Log.d("DUPA", "sayInPolish: $a")
+        Log.d("Flash", "sayInPolish: $a")
     }
 
     private fun sayInEnglish(text: String) {
@@ -148,7 +148,7 @@ class FlashCardsScreen(carContext: CarContext) : Screen(carContext), Recognition
             null,
             "" + Calendar.getInstance().timeInMillis
         )
-        Log.d("DUPA", "sayInEnglish: $a")
+        Log.d("Flash", "sayInEnglish: $a")
     }
 
     private fun sayProperWordWithToast(isValidAnswer: Boolean, onDone: (Boolean) -> Unit) {
